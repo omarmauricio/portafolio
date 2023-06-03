@@ -8,12 +8,16 @@ const mensaje = document.querySelector(".mensaje");
 // La letra "u" es convertida para "ufat"
 
 function btnEncriptar(){
-    const textoEncriptado = encriptar(textArea.value);
-    mensaje.value = textoEncriptado;
-    textArea.value = "";
-    mensaje.style.backgroundImage = "none";
+    const textoEncriptado = textArea.value;
+    if (/^[a-z]+$/.test(textoEncriptado)) {
+        const textoEncriptadoModificado = encriptar(textoEncriptado);
+        mensaje.value = textoEncriptadoModificado;
+        textArea.value = "";
+        mensaje.style.backgroundImage = "none";
+    } else {
+        alert("Ingrese solo letras minúsculas y sin acentos");
+    }
 }
-
 function encriptar(stringEncriptada){
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o","ober"], ["u","ufat"]];
     stringEncriptada = stringEncriptada.toLowerCase();
